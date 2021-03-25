@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>猜数字游戏</title>
+  	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+ </head>
+ <body>
+	<div id="container">
+        <guess></guess>
+    </div>
+    <script>
+    //利用vue的组件
+        Vue.component("guess",{
+            data:function(){
+                return {
+                    randomNum:0,myInput:0,result:""
+                }
+            },
+            template:`
+                <div>
+                    <input type="text" v-model.number="myInput"/>
+                    <br>
+                    <p>{{result}}</p>
+                </div>
+            `,
+            beforeMount: function () {
+			//创建随机数
+			var num = Math.floor(Math.random()*100);
+			console.log(num);
+			this.randomNum = num;
+			},
+            //监听input的变化
+            watch:{
+                myInput:function(){
+                    if(this.myInput==this.randomNum){
+                        this.result = "恭喜：猜对了";
+                    }else if(this.myInput>this.randomNum){
+                        this.result = "啊哦！猜大了";
+                    }else{
+                        this.result = "啊哦！猜小了";
+                    }
+                }
+            }
+        })
+        new Vue({
+            el:"#container",
+            data:{}
+        })
+    </script>
+ </body>
+</html>
