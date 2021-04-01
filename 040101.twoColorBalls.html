@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>双色球号码随机生成</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div>
+			
+			<div id="red" style="border: solid 1px #2C3E50;height: 250px;width: 250px;margin-left: 600px;">
+				<h2 style="text-align: center;">欢乐六合彩</h2>
+				<h3 style="text-align: center;">下一个中奖的一定不是你</h3>
+				<button v-on:click="getRed" style="border: none;height: 40px;width: 120px;background: lightskyblue;color: white;font-size: 15px;margin-left: 60px;">点我摇球</button>
+				<h3 style="padding-left: 40px;color: red;">红球:{{a}} {{b}} {{c}} {{d}} {{e}}</h3>
+				<h3 style="padding-left: 40px;color: blue;">蓝球:{{x}}</h3>
+			</div>
+			
+			
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var arr=[];
+		let v=new Vue({
+			el:'#red',
+			data:{
+				a:'',
+				b:'',
+				c:'',
+				d:'',
+				e:'',
+				x:''
+			},
+			methods:{
+				getRed:function(){
+					
+					for(var i=0;i<5;i++){
+						var num=Math.floor(Math.random()*35+1);
+						arr[i]=num;			
+					}
+					
+					this.a=arr[0];
+					this.b=arr[1];
+					this.c=arr[2];
+					this.d=arr[3];
+					this.e=arr[4];
+					
+					var num1=Math.floor(Math.random()*15+1);
+					this.x=num1;
+					
+				}
+			}
+		})
+		
+	</script>
+	
+</html>

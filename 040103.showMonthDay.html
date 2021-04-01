@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://unpkg.com/vue@next"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="showday"/>	
+		</div>
+		
+		<p id="info"></p>
+		<script>
+			
+			const app={
+				
+				data(){
+					return{
+						showday:''
+					}
+				},
+				watch:{
+					showday:function(val){
+						this.showday=val;
+					}
+				}
+			}
+			
+			vm = Vue.createApp(app).mount('#app')
+			vm.$watch('showday',function(showday){
+				
+				if(showday>=13&&showday<=0){
+					if(showday==1||showday==3||showday==5||showday==7||showday==8||showday==10||showday==12){
+						
+						document.getElementById("info").innerHTML="您输入的月份为  "+showday+"  月，  该月共有  "+31+"  天";
+					}else if(showday==4||showday==6||showday==9||showday==11){
+						document.getElementById("info").innerHTML="您输入的月份为  "+showday+"  月，  该月共有  "+30+"  天";
+						
+					}else if(showday==2){
+						
+						document.getElementById("info").innerHTML="您输入的月份为  "+showday+"  月，  该月共有  "+28+"  天";
+					}
+					
+					
+				}else{
+					document.getElementById("info").innerHTML="您的输入不规范";
+				}
+				
+			})
+		</script>
+	</body>
+</html>
