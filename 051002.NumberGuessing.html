@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		<!-- 	<input type="text" v-model="userKey" @keydown.enter="show()"/> -->
+			<input type="text" id="inputnumber"  v-model="num" @keydown.enter="show()"/>
+			<p>{{result}}</p>
+		</div>
+		<script type="text/javascript">
+			let v=new Vue({
+				el:"#app",
+				data:{
+					num:" ",
+					result:" "
+				},
+				methods:{
+					show(){
+						var number=v.num;
+						var num1=Math.round(Math.random()*100);
+						
+						/* alert(num1); */
+						if (number>num1) {
+							this.result="猜大啦，再猜一遍吧";
+							
+							
+						} else if(number<num1){
+							this.result="猜小啦,再猜一遍吧";
+							
+							
+						}else{
+							this.result="恭喜你猜对啦";
+							
+						}
+						
+					}
+				}
+				
+			})
+			
+		</script>
+	</body>
+</html>
